@@ -1,11 +1,11 @@
 from datetime import datetime
 from pydantic import BaseModel
-from typing import Union
+from typing import Union, List
 
 class Article(BaseModel):
     title: str
     text: str
-    image: Union[str, None] = None
+    image: Union[List[str], None] = None
 
 
 class Comment(BaseModel):

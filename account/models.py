@@ -1,6 +1,6 @@
 from sqlalchemy import Boolean, Column, Integer, String
 from sqlalchemy.orm import relationship
-# from fastapi_users.db import SQLAlchemyBaseUserTable
+# from pydantic import EmailStr
 
 from database.db import Base
 

@@ -23,7 +23,9 @@ JWT_REFRESH_SECRET_KEY = secret['JWT_REFRESH_SECRET_KEY'] # should be kept secre
 
 
 def verify_password(plain_password: str, hashed_password: str):
-    return pass_context.verify(plain_password, hashed_password)
+    print('VVVERRRAAA')
+    res = pass_context.verify(plain_password, hashed_password)
+    return res
 
 
 def get_password_hash(password: str):

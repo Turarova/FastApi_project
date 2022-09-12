@@ -1,9 +1,9 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 # from typing import Union, List
 
 class User(BaseModel):
     # id: int
-    email: str
+    email: EmailStr
 
 
 class UserCreate(User):
