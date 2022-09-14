@@ -15,10 +15,6 @@ async def shutdown():
     await database.disconnect()
 
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
 app.include_router(routers)
 
 Base.metadata.create_all(bind=engine)

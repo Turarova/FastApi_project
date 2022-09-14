@@ -11,3 +11,4 @@ class Article(BaseModel):
 class Comment(BaseModel):
     text: str
     created_at: datetime
+    atricle_id : int

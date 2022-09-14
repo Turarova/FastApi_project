@@ -12,7 +12,7 @@ class Arcticle(Base):
     text = Column(Text)
     image = Column(String)
 
-    user = relationship("User", back_populates = "article")
+article = Arcticle.__table__
 
 class Comment(Base):
     __tablename__ = "comment"
@@ -24,3 +24,5 @@ class Comment(Base):
 
     user = relationship("User", back_populates = "comment")
     article = relationship("Article", back_populates = "comment")
+
+comment = Comment.__table__

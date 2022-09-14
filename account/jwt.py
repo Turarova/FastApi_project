@@ -23,7 +23,6 @@ JWT_REFRESH_SECRET_KEY = secret['JWT_REFRESH_SECRET_KEY'] # should be kept secre
 
 
 def verify_password(plain_password: str, hashed_password: str):
-    print('VVVERRRAAA')
     res = pass_context.verify(plain_password, hashed_password)
     return res
 
@@ -44,3 +43,10 @@ def create_refresh_token(subject: Union[Dict, Any]) -> str:
     to_encode = {"exp": datetime.utcnow() + timedelta(minutes=REFRESH_TOKEN_EXPIRE_MINUTES), "sub": str(subject)}
     encoded_jwt = jwt.encode(to_encode, JWT_REFRESH_SECRET_KEY, ALGORITHM)
     return encoded_jwt
+
+# def decode_token(token):
+#     decoded_jwt = jwt.decode(token, JWT_SECRET_KEY, algorithms=[ALGORITHM])
+#     # user = decoded_jwt.get("subject")
+#     return decoded_jwt
+
+

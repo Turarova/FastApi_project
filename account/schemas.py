@@ -2,7 +2,6 @@ from pydantic import BaseModel, Field, EmailStr
 # from typing import Union, List
 
 class User(BaseModel):
-    # id: int
     email: EmailStr
 
 
@@ -12,4 +11,6 @@ class UserCreate(User):
     class Config:
         orm_mode = True
 
-
+class BaseUser(BaseModel):
+    id: int
+    email: EmailStr

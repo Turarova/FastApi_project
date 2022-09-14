@@ -1,6 +1,5 @@
 from sqlalchemy import Boolean, Column, Integer, String
 from sqlalchemy.orm import relationship
-# from pydantic import EmailStr
 
 from database.db import Base
 
@@ -19,17 +18,3 @@ class User(Base):
     article = relationship("Article", back_populates="owner")
 
 user = User.__table__
-
-
-# import sqlalchemy
-
-
-# metadata = sqlalchemy.MetaData()
-
-# user = sqlalchemy.Table(
-#     "user",
-#     metadata,
-#     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-#     sqlalchemy.Column("text", sqlalchemy.String(length=100)),
-#     sqlalchemy.Column("completed", sqlalchemy.),
-# )

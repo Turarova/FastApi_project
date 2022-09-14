@@ -1,7 +1,6 @@
 import os
 from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
 from pydantic import EmailStr
-from typing import List
 from dotenv import load_dotenv
 load_dotenv('.env')
 
@@ -19,17 +18,10 @@ conf = ConnectionConfig(
 )
 
 async def send_email(email: EmailStr, code: str):
-    context = {
-        "email_text_detail": """
-                        Thanks for creating account.
-                        Please verify your account
-                            """,
-        "email": email,
-        "activation_code": List[code]
-    }
+    context = f"Thanks for creating account. Please verify your account. Activation_code : {code}"
     message = MessageSchema(
         subject='Activation code',
-        recipients=List[email],
+        recipients=[email],
         body=str(context), 
         subtype = 'html'
     )
