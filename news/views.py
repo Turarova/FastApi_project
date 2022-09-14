@@ -32,7 +32,7 @@ async def delete_article(id):
 
 
 async def get_comment_list(id):
-    return await database.fetch_all(query=article.select(), values={"id":id})
+    return await database.fetch_all(query=comment.select(), values={"id":id})
 
 
 async def create_comment(item):   
