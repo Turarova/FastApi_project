@@ -10,3 +10,5 @@
 * fastapi-users[sqlalchemy]
 * python-jose[cryptography]
 * alembic
+* fastapi-mail
+* python-dotenv
