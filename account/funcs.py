@@ -18,9 +18,7 @@ http_bearer = HTTPBearer()
 @router.get("/", response_model=List[BaseUser])
 async def user_list(token : str = Depends(http_bearer)):
     return await get_user_list()
-    # print("tokkeeenn", token.credentials)
-    # user = decode_token(token)
-    # print("UUUUUSSSSSSEEEERRRRRR", user) 
+    
     
 
 

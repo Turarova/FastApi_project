@@ -1,9 +1,10 @@
+import os
 from datetime import datetime, timedelta
 from typing import Dict, Union, Any
 from jose import jwt
 from passlib.context import CryptContext
-from env import secret
-
+from dotenv import load_dotenv
+load_dotenv('.env')
 
 pass_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -14,8 +15,8 @@ pass_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 ACCESS_TOKEN_EXPIRE_MINUTES = 30  # 30 minutes
 REFRESH_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7 # 7 days
 ALGORITHM = "HS256"
-JWT_SECRET_KEY = secret['JWT_SECRET_KEY']  # should be kept secret
-JWT_REFRESH_SECRET_KEY = secret['JWT_REFRESH_SECRET_KEY'] # should be kept secret
+JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')  # should be kept secret
+JWT_REFRESH_SECRET_KEY = os.getenv('JWT_REFRESH_SECRET_KEY') # should be kept secret
 
 
 
@@ -44,9 +45,9 @@ def create_refresh_token(subject: Union[Dict, Any]) -> str:
     encoded_jwt = jwt.encode(to_encode, JWT_REFRESH_SECRET_KEY, ALGORITHM)
     return encoded_jwt
 
-# def decode_token(token):
-#     decoded_jwt = jwt.decode(token, JWT_SECRET_KEY, algorithms=[ALGORITHM])
-#     # user = decoded_jwt.get("subject")
-#     return decoded_jwt
+def decode_token(token):
+    decoded_jwt = jwt.decode(token.credentials, JWT_SECRET_KEY, algorithms=[ALGORITHM])
+    user = decoded_jwt.get("sub").replace("email=", "").replace("password=", "").replace("'", "").split()
+    return user
 
 
